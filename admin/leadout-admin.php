@@ -231,9 +231,7 @@ class WPLeadOutAdmin {
 
         self::check_admin_action();
 
-        $leadout_icon = LEADOUT_PATH . '/images/leadout-icon-16x16.png';
-
-        add_menu_page('LeadOut', 'LeadOut', $capability, 'leadout_stats', array($this, 'leadout_build_stats_page'), $leadout_icon , '25.100713');
+        add_menu_page('LeadOut', 'LeadOut', $capability, 'leadout_stats', array($this, 'leadout_build_stats_page'), '', '25.100713');
 
         if ( count($this->admin_power_ups) )
         {
@@ -1054,9 +1052,7 @@ class WPLeadOutAdmin {
         ?>
         
         <div class="oboarding-steps">
-            
-            <img src="<?php echo LEADOUT_PATH . '/images/leadout_logo.png' ; ?>" width="147px">
-                
+              
             <?php if ( $li_options['onboarding_step'] <= 1 ) : ?>
 
                 <?php $this->leadout_header('You\'re 3 steps away from understanding your visitors better.' , 'li_setup_header', 'Onboarding Step 2 - Get Contact Reports'); ?>
