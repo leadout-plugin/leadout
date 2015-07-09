@@ -1,4 +1,5 @@
 # LeadOut #
+**Contributors:** andygcook, nelsonjoyce
   
 **Tags:**  crm, contacts, lead tracking, click tracking, visitor tracking, analytics, marketing automation, inbound marketing, subscription, marketing, lead generation, mailchimp, constant contact, newsletter, popup, popover, email list, email, contacts database, contact form, forms, form widget, popup form
   
@@ -38,6 +39,12 @@ Our simple analytics show you what sources of traffic and content are driving th
 2. LeadOut automatically identifies and watches each existing form on your site for submissions.
 3. Once someone fills out any other form on your site, LeadOut will identify that person with their email address. and add them to your contact list.
 4. You'll also receive an email with a link to the new contact record with all of their visit history. (check the screenshots sections to see it in action)
+
+### Who's using LeadOut? ###
+
+**<a href="http://www.extremeinbound.com/leadout-wordpress-crm-inbound-plugin/" target="_blank">Alan Perlman</a>**: *“I can use LeadOut to get a sense of how engaged certain contacts are, and I can learn more about their behavior on my website to better drive the conversation and understand what they’re interested in or looking for.”*
+
+**<a href="http://thewpvalet.com/wordpress-lead-tracking/" target="_blank">Adam W. Warner</a>**: *“…the LeadOut plugin has been very useful so far in giving us an idea of the actual visitor paths to our contact forms vs. the paths we’ve intended.”*
 
 ## Installation ##
 

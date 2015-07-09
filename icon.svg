@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="130px" height="130px" viewBox="0 0 130 130" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.4 (8053) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <rect id="Rectangle-109" fill="#B1E8E7" sketch:type="MSShapeGroup" x="0" y="0" width="130" height="130"></rect>
+        <g id="Rectangle-111-+-Rectangle-110-+-Rectangle-113" sketch:type="MSLayerGroup" transform="translate(18.000000, 33.000000)">
+            <path d="M4.26075895,41.543163 L0.791425979,52.0120161 C-0.662369811,56.3989038 2.1503969,59.9551791 7.07800515,59.9551791 L24.9158526,59.9551791 L33.6498458,33.6 L15.8119984,33.6 C10.8862208,33.6 5.7151839,37.1543767 4.26075895,41.543163 Z" id="Rectangle-109" fill="#FAB284" sketch:type="MSShapeGroup"></path>
+            <path d="M35.1192718,27.9976601 L24.6309271,59.996 L51.2975938,59.996 L64.4073937,20 L46.6296064,20 C41.7204139,20 36.5657825,23.5845768 35.1192718,27.9976601 Z" id="Rectangle-110" fill="#F67A33" sketch:type="MSShapeGroup"></path>
+            <path d="M67.8858871,7.99854961 L51.0185185,60 L68.6111206,60 C73.4691757,60 78.5701551,56.4152934 80.0018444,52.0014504 L94.274776,7.99854961 C95.707644,3.58107264 92.9327867,0 88.0729261,0 L79.2766109,0 C74.4185558,0 69.3175764,3.58470658 67.8858871,7.99854961 Z" id="Rectangle-111" fill="#F44800" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>
