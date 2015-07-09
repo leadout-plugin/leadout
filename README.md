@@ -7,7 +7,7 @@
   
 **Tested up to:** 4.2.2
   
-**Stable tag:** 3.1.8
+**Stable tag:** 3.1.9
   
 
 LeadOut is an easy-to-use marketing automation and lead tracking plugin for WordPress that helps you better understand your web site visitors.
