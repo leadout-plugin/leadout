@@ -9,69 +9,6 @@ Author URI: http://github.com/leadout-plugin/leadout/
 License: GPL2
 */
 
-if ( isset($_GET['error']) && $_GET['error'] == 'true' )
-{
-	if ( isset($_GET['plugin']) && $_GET['plugin'] == 'leadin/leadin.php' )
-	{
-		if ( function_exists('activate_leadout') )
-		{
-			include_once(ABSPATH . 'wp-admin/includes/plugin.php');
-			include_once(ABSPATH . 'wp-includes/pluggable.php');
-
-			add_action( 'admin_notices', 'deactivate_leadout_notice' );		
-		}
-	}
-}
-
-function deactivate_leadout_notice () 
-{
-    ?>
-    <div id="message" class="error">
-        <?php _e( '<p><b>Don\'t panic...</b></p><p>Leadin and LeadOut are like two rival siblings - they don\'t play nice together. Deactivate <b><i>Leadin</i></b> and then try activating <b><i>LeadOut</i></b> again, and everything should work fine.</p>', 'my-text-domain' ); ?>
-    </div>
-    <?php
-}
-
-//=============================================
-// Define Constants
-//=============================================
-
-if ( !defined('LEADOUT_PATH') )
-    define('LEADOUT_PATH', untrailingslashit(plugins_url('', __FILE__ )));
-
-if ( !defined('LEADOUT_PLUGIN_DIR') )
-	define('LEADOUT_PLUGIN_DIR', untrailingslashit(dirname( __FILE__ )));
-
-if ( !defined('LEADOUT_PLUGIN_SLUG') )
-	define('LEADOUT_PLUGIN_SLUG', basename(dirname(__FILE__)));
-
-if ( !defined('LEADOUT_DB_VERSION') )
-	define('LEADOUT_DB_VERSION', '2.2.4');
-
-if ( !defined('LEADOUT_PLUGIN_VERSION') )
-	define('LEADOUT_PLUGIN_VERSION', '3.1.9');
-
-//=============================================
-// Include Needed Files
-//=============================================
-
-require_once(LEADOUT_PLUGIN_DIR . '/inc/leadout-ajax-functions.php');
-require_once(LEADOUT_PLUGIN_DIR . '/inc/leadout-functions.php');
-require_once(LEADOUT_PLUGIN_DIR . '/inc/class-emailer.php');
-require_once(LEADOUT_PLUGIN_DIR . '/admin/leadout-admin.php');
-
-require_once(LEADOUT_PLUGIN_DIR . '/inc/class-leadout.php');
-
-require_once(LEADOUT_PLUGIN_DIR . '/power-ups/subscribe-widget.php');
-require_once(LEADOUT_PLUGIN_DIR . '/power-ups/contacts.php');
-require_once(LEADOUT_PLUGIN_DIR . '/power-ups/mailchimp-connect.php');
-require_once(LEADOUT_PLUGIN_DIR . '/power-ups/constant-contact-connect.php');
-require_once(LEADOUT_PLUGIN_DIR . '/power-ups/aweber-connect.php');
-require_once(LEADOUT_PLUGIN_DIR . '/power-ups/campaign-monitor-connect.php');
-require_once(LEADOUT_PLUGIN_DIR . '/power-ups/getresponse-connect.php');
-
-
-
 //=============================================
 // Hooks & Filters
 //=============================================
@@ -221,6 +158,53 @@ function activate_leadout_on_new_blog ( $blog_id, $user_id, $domain, $path, $sit
  */
 function leadout_init ()
 {
+	if ( function_exists( 'activate_leadin' ) ) 
+	{
+		remove_action( 'plugins_loaded', 'leadout_init' );
+     	deactivate_plugins(plugin_basename( __FILE__ ));
+
+		add_action( 'admin_notices', 'deactivate_leadout_notice' );
+	    return;
+	}
+
+	//=============================================
+	// Define Constants
+	//=============================================
+
+	if ( !defined('LEADOUT_PATH') )
+	    define('LEADOUT_PATH', untrailingslashit(plugins_url('', __FILE__ )));
+
+	if ( !defined('LEADOUT_PLUGIN_DIR') )
+		define('LEADOUT_PLUGIN_DIR', untrailingslashit(dirname( __FILE__ )));
+
+	if ( !defined('LEADOUT_PLUGIN_SLUG') )
+		define('LEADOUT_PLUGIN_SLUG', basename(dirname(__FILE__)));
+
+	if ( !defined('LEADOUT_DB_VERSION') )
+		define('LEADOUT_DB_VERSION', '2.2.4');
+
+	if ( !defined('LEADOUT_PLUGIN_VERSION') )
+		define('LEADOUT_PLUGIN_VERSION', '3.1.9');
+
+	//=============================================
+	// Include Needed Files
+	//=============================================
+
+	require_once(LEADOUT_PLUGIN_DIR . '/inc/leadout-ajax-functions.php');
+	require_once(LEADOUT_PLUGIN_DIR . '/inc/leadout-functions.php');
+	require_once(LEADOUT_PLUGIN_DIR . '/inc/class-emailer.php');
+	require_once(LEADOUT_PLUGIN_DIR . '/admin/leadout-admin.php');
+
+	require_once(LEADOUT_PLUGIN_DIR . '/inc/class-leadout.php');
+
+	require_once(LEADOUT_PLUGIN_DIR . '/power-ups/subscribe-widget.php');
+	require_once(LEADOUT_PLUGIN_DIR . '/power-ups/contacts.php');
+	require_once(LEADOUT_PLUGIN_DIR . '/power-ups/mailchimp-connect.php');
+	require_once(LEADOUT_PLUGIN_DIR . '/power-ups/constant-contact-connect.php');
+	require_once(LEADOUT_PLUGIN_DIR . '/power-ups/aweber-connect.php');
+	require_once(LEADOUT_PLUGIN_DIR . '/power-ups/campaign-monitor-connect.php');
+	require_once(LEADOUT_PLUGIN_DIR . '/power-ups/getresponse-connect.php');
+
     $leadout_wp = new WPLeadOut();
 }
 
@@ -314,6 +298,15 @@ function leadout_db_install ()
 	dbDelta($sql);
 
     leadout_update_option('leadin_options', 'li_db_version', LEADOUT_DB_VERSION);
+}
+
+function deactivate_leadout_notice () 
+{
+    ?>
+    <div id="message" class="error">
+        <?php _e( '<p><b>LeadOut was not activated because Leadin is still activated...</b></p><p>Don\'t panic - Leadin and LeadOut are like two rival siblings - they don\'t play nice together. Deactivate <b><i>Leadin</i></b> and then try activating <b><i>LeadOut</i></b> again, and everything should work fine.</p>', 'my-text-domain' ); ?>
+    </div>
+    <?php
 }
 
 add_action( 'plugins_loaded', 'leadout_init', 14 );
