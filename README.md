@@ -1,5 +1,4 @@
 # LeadOut #
-**Contributors:** andygcook, nelsonjoyce
   
 **Tags:**  crm, contacts, lead tracking, click tracking, visitor tracking, analytics, marketing automation, inbound marketing, subscription, marketing, lead generation, mailchimp, constant contact, newsletter, popup, popover, email list, email, contacts database, contact form, forms, form widget, popup form
   
