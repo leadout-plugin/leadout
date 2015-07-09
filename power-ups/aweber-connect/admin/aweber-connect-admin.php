@@ -2,7 +2,7 @@
 //=============================================
 // LIAweberConnectAdmin Class
 //=============================================
-class LIAweberConnectAdmin extends WPLeadInAdmin {
+class LIAweberConnectAdmin extends WPLeadOutAdmin {
     
     var $power_up_settings_section = 'leadin_aweber_connect_options_section';
     var $power_option_name = 'leadin_aweber_connect_options';
@@ -54,13 +54,13 @@ class LIAweberConnectAdmin extends WPLeadInAdmin {
     function leadout_build_esp_settings_page ()
     {
         register_setting('leadout_settings_options', $this->power_option_name, array($this, 'sanitize'));
-        add_settings_section($this->power_up_settings_section, $this->power_up_icon . "AWeber", array($this, 'aweber_connect_section_callback'), LEADIN_ADMIN_PATH);
-        add_settings_field('li_ac_auth_code', 'Authorization Code', array($this, 'li_ac_auth_code_callback'), LEADIN_ADMIN_PATH, $this->power_up_settings_section);
+        add_settings_section($this->power_up_settings_section, $this->power_up_icon . "AWeber", array($this, 'aweber_connect_section_callback'), LEADOUT_ADMIN_PATH);
+        add_settings_field('li_ac_auth_code', 'Authorization Code', array($this, 'li_ac_auth_code_callback'), LEADOUT_ADMIN_PATH, $this->power_up_settings_section);
 
         if ( isset($this->options['li_ac_auth_code']) )
         {
             if ( $this->options['li_ac_auth_code'] && ! $this->invalid_key )
-                add_settings_field('li_print_synced_lists', 'Synced tags', array($this, 'li_print_synced_lists'), LEADIN_ADMIN_PATH, $this->power_up_settings_section);
+                add_settings_field('li_print_synced_lists', 'Synced tags', array($this, 'li_print_synced_lists'), LEADOUT_ADMIN_PATH, $this->power_up_settings_section);
         }
     }
 

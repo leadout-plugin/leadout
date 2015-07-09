@@ -1,6 +1,6 @@
 <?php
 
-if ( !defined('LEADIN_PLUGIN_VERSION') )
+if ( !defined('LEADOUT_PLUGIN_VERSION') )
 {
 	header( 'HTTP/1.0 403 Forbidden' );
 	die;
@@ -495,7 +495,7 @@ function leadout_print_debug_values ( )
 	$debug_string = '';
 	$error_string = '';
 
-	$debug_string .= "LeadOut version: " . LEADIN_PLUGIN_VERSION . "\n";
+	$debug_string .= "LeadOut version: " . LEADOUT_PLUGIN_VERSION . "\n";
 	$debug_string .= "WordPress version: " . $wp_version . "\n";
 	$debug_string .= "Multisite : " . ( is_multisite() ? "YES" : "NO" ) . "\n";
 	$debug_string .= "Pro enabled: " . ( leadout_check_pro_user() ? 'YES' : 'NO' ) . "\n";

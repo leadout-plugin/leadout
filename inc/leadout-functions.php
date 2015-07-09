@@ -1,6 +1,6 @@
 <?php
 
-if ( !defined('LEADIN_PLUGIN_VERSION') ) 
+if ( !defined('LEADOUT_PLUGIN_VERSION') ) 
 {
     header('HTTP/1.0 403 Forbidden');
     die;
@@ -322,7 +322,7 @@ function leadout_convert_statuses_to_tags ( )
         // Check if LeadOut Subscribe is activated
         if ( ! $subscriber_exists )
         {
-            if ( WPLeadIn::is_power_up_active('subscribe_widget') )
+            if ( WPLeadOut::is_power_up_active('subscribe_widget') )
                 $subscriber_exists = TRUE;
         }
 
@@ -804,8 +804,8 @@ function leadout_check_missing_options ( $options )
 {
     $default_options = array(
         'li_installed'              => 1,
-        'leadout_version'            => LEADIN_PLUGIN_VERSION,
-        'li_db_version'             => LEADIN_DB_VERSION,
+        'leadout_version'            => LEADOUT_PLUGIN_VERSION,
+        'li_db_version'             => LEADOUT_DB_VERSION,
         'li_email'                  => get_bloginfo('admin_email'),
         'li_updates_subscription'   => 1,
         'onboarding_step'           => 1,
@@ -818,7 +818,7 @@ function leadout_check_missing_options ( $options )
     );
 
     // Add the Pro flag if this is a pro installation
-    if ( ( defined('LEADIN_UTM_SOURCE') && LEADIN_UTM_SOURCE != 'leadin%20repo%20plugin') || ! defined('LEADIN_UTM_SOURCE') )
+    if ( ( defined('LEADOUT_UTM_SOURCE') && LEADOUT_UTM_SOURCE != 'leadin%20repo%20plugin') || ! defined('LEADOUT_UTM_SOURCE') )
         $default_options['pro'] = 1;
 
     $update_option = FALSE;

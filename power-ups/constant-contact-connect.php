@@ -21,30 +21,30 @@
 // Define Constants
 //=============================================
 
-if ( !defined('LEADIN_CONSTANT_CONTACT_CONNECT_PATH') )
-    define('LEADIN_CONSTANT_CONTACT_CONNECT_PATH', LEADIN_PATH . '/power-ups/constant-contact-connect');
+if ( !defined('LEADOUT_CONSTANT_CONTACT_CONNECT_PATH') )
+    define('LEADOUT_CONSTANT_CONTACT_CONNECT_PATH', LEADOUT_PATH . '/power-ups/constant-contact-connect');
 
-if ( !defined('LEADIN_CONSTANT_CONTACT_CONNECT_PLUGIN_DIR') )
-	define('LEADIN_CONSTANT_CONTACT_CONNECT_PLUGIN_DIR', LEADIN_PLUGIN_DIR . '/power-ups/constant-contact-connect');
+if ( !defined('LEADOUT_CONSTANT_CONTACT_CONNECT_PLUGIN_DIR') )
+	define('LEADOUT_CONSTANT_CONTACT_CONNECT_PLUGIN_DIR', LEADOUT_PLUGIN_DIR . '/power-ups/constant-contact-connect');
 
-if ( !defined('LEADIN_CONSTANT_CONTACT_CONNECT_PLUGIN_SLUG') )
-	define('LEADIN_CONSTANT_CONTACT_CONNECT_SLUG', basename(dirname(__FILE__)));
+if ( !defined('LEADOUT_CONSTANT_CONTACT_CONNECT_PLUGIN_SLUG') )
+	define('LEADOUT_CONSTANT_CONTACT_CONNECT_SLUG', basename(dirname(__FILE__)));
 
-if ( !defined('LEADIN_CONSTANT_CONTACT_API_KEY') )
-	define('LEADIN_CONSTANT_CONTACT_API_KEY', 'p5hrzdhe2zrwbm76r2u7pvtc');
+if ( !defined('LEADOUT_CONSTANT_CONTACT_API_KEY') )
+	define('LEADOUT_CONSTANT_CONTACT_API_KEY', 'p5hrzdhe2zrwbm76r2u7pvtc');
 
 
 
 //=============================================
 // Include Needed Files
 //=============================================
-require_once(LEADIN_CONSTANT_CONTACT_CONNECT_PLUGIN_DIR . '/admin/constant-contact-connect-admin.php');
-require_once(LEADIN_CONSTANT_CONTACT_CONNECT_PLUGIN_DIR . '/inc/li_constant_contact.php');
+require_once(LEADOUT_CONSTANT_CONTACT_CONNECT_PLUGIN_DIR . '/admin/constant-contact-connect-admin.php');
+require_once(LEADOUT_CONSTANT_CONTACT_CONNECT_PLUGIN_DIR . '/inc/li_constant_contact.php');
 
 //=============================================
-// WPLeadIn Class
+// WPLeadOut Class
 //=============================================
-class WPConstantContactConnect extends WPLeadIn {
+class WPConstantContactConnect extends WPLeadOut {
 	
 	var $admin;
 	var $options;
@@ -105,7 +105,7 @@ class WPConstantContactConnect extends WPLeadIn {
 			// Convert the stored list id integer into the accepted constant contact list id format
 			$list_id = 'http://api.constantcontact.com/ws/customers/' . str_replace('@', '%40', $this->options['li_cc_email']) . '/lists/' . $list_id;
 
-			$this->constant_contact = new LI_ConstantContact($this->options['li_cc_email'], $this->options['li_cc_password'], LEADIN_CONSTANT_CONTACT_API_KEY, FALSE);
+			$this->constant_contact = new LI_ConstantContact($this->options['li_cc_email'], $this->options['li_cc_password'], LEADOUT_CONSTANT_CONTACT_API_KEY, FALSE);
 
 			if ( ! isset($this->cc_id) )
 			{
@@ -153,7 +153,7 @@ class WPConstantContactConnect extends WPLeadIn {
 			// Convert the stored list id integer into the accepted constant contact list id format
 			$list_id = 'http://api.constantcontact.com/ws/customers/' . str_replace('@', '%40', $this->options['li_cc_email']) . '/lists/' . $list_id;
 
-			$this->constant_contact = new LI_ConstantContact($this->options['li_cc_email'], $this->options['li_cc_password'], LEADIN_CONSTANT_CONTACT_API_KEY, FALSE);
+			$this->constant_contact = new LI_ConstantContact($this->options['li_cc_email'], $this->options['li_cc_password'], LEADOUT_CONSTANT_CONTACT_API_KEY, FALSE);
 			$cc_id = $this->constant_contact->search_contact_by_email($email);
 
 			if ( $cc_id )

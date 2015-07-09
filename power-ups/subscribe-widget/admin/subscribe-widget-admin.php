@@ -6,9 +6,9 @@
 
 
 //=============================================
-// WPLeadInAdmin Class
+// WPLeadOutAdmin Class
 //=============================================
-class WPLeadInSubscribeAdmin extends WPLeadInAdmin {
+class WPLeadOutSubscribeAdmin extends WPLeadOutAdmin {
     
     var $power_up_settings_section = 'leadin_subscribe_options_section';
     var $power_up_icon;
@@ -46,49 +46,49 @@ class WPLeadInSubscribeAdmin extends WPLeadInAdmin {
             $this->power_up_settings_section,
             $this->power_up_icon . 'Pop-up Form',
             array($this, 'print_hidden_settings_fields'),
-            LEADIN_ADMIN_PATH
+            LEADOUT_ADMIN_PATH
         );
 
         add_settings_field(
             'li_subscribe_vex_class',
             'Pop-up Location',
             array($this, 'li_subscribe_vex_class_callback'),
-            LEADIN_ADMIN_PATH,
+            LEADOUT_ADMIN_PATH,
             $this->power_up_settings_section
         );
         add_settings_field(
             'li_subscribe_heading',
             'Pop-up header text',
             array($this, 'li_subscribe_heading_callback'),
-            LEADIN_ADMIN_PATH,
+            LEADOUT_ADMIN_PATH,
             $this->power_up_settings_section
         );
         add_settings_field(
             'li_subscribe_text',
             'Description text',
             array($this, 'li_subscribe_text_callback'),
-            LEADIN_ADMIN_PATH,
+            LEADOUT_ADMIN_PATH,
             $this->power_up_settings_section
         );
         add_settings_field(
             'li_subscribe_btn_label',
             'Button text',
             array($this, 'li_subscribe_btn_label_callback'),
-            LEADIN_ADMIN_PATH,
+            LEADOUT_ADMIN_PATH,
             $this->power_up_settings_section
         );
         add_settings_field(
             'li_subscribe_btn_color',
             'Button color',
             array($this, 'li_subscribe_btn_color_callback'),
-            LEADIN_ADMIN_PATH,
+            LEADOUT_ADMIN_PATH,
             $this->power_up_settings_section
         );
         add_settings_field(
             'li_subscribe_additional_fields',
             'Also include fields for',
             array($this, 'li_subscribe_additional_fields_callback'),
-            LEADIN_ADMIN_PATH,
+            LEADOUT_ADMIN_PATH,
             $this->power_up_settings_section
         );
 
@@ -96,7 +96,7 @@ class WPLeadInSubscribeAdmin extends WPLeadInAdmin {
             'li_subscribe_templates', 
             'Show subscribe pop-up on', 
             array($this, 'li_subscribe_templates_callback'), 
-            LEADIN_ADMIN_PATH, 
+            LEADOUT_ADMIN_PATH, 
             $this->power_up_settings_section
         );
 
@@ -104,7 +104,7 @@ class WPLeadInSubscribeAdmin extends WPLeadInAdmin {
             'li_subscribe_confirmation', 
             'Subscription confirmation', 
             array($this, 'li_subscribe_confirmation_callback'), 
-            LEADIN_ADMIN_PATH, 
+            LEADOUT_ADMIN_PATH, 
             $this->power_up_settings_section
         );
 
@@ -112,7 +112,7 @@ class WPLeadInSubscribeAdmin extends WPLeadInAdmin {
             'li_subscribe_mobile_popup', 
             'Show on mobile?', 
             array($this, 'li_subscribe_mobile_popup_callback'), 
-            LEADIN_ADMIN_PATH, 
+            LEADOUT_ADMIN_PATH, 
             $this->power_up_settings_section
         );
     }

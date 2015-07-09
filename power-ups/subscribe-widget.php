@@ -1,7 +1,7 @@
 <?php
 /**
 	* Power-up Name: Pop-up Form
-	* Power-up Class: WPLeadInSubscribe
+	* Power-up Class: WPLeadOutSubscribe
 	* Power-up Menu Text: 
 	* Power-up Slug: subscribe_widget
 	* Power-up Menu Link: settings
@@ -21,24 +21,24 @@
 // Define Constants
 //=============================================
 
-if ( !defined('LEADIN_SUBSCRIBE_WIDGET_PATH') )
-    define('LEADIN_SUBSCRIBE_WIDGET_PATH', LEADIN_PATH . '/power-ups/subscribe-widget');
+if ( !defined('LEADOUT_SUBSCRIBE_WIDGET_PATH') )
+    define('LEADOUT_SUBSCRIBE_WIDGET_PATH', LEADOUT_PATH . '/power-ups/subscribe-widget');
 
-if ( !defined('LEADIN_SUBSCRIBE_WIDGET_PLUGIN_DIR') )
-	define('LEADIN_SUBSCRIBE_WIDGET_PLUGIN_DIR', LEADIN_PLUGIN_DIR . '/power-ups/subscribe-widget');
+if ( !defined('LEADOUT_SUBSCRIBE_WIDGET_PLUGIN_DIR') )
+	define('LEADOUT_SUBSCRIBE_WIDGET_PLUGIN_DIR', LEADOUT_PLUGIN_DIR . '/power-ups/subscribe-widget');
 
-if ( !defined('LEADIN_SUBSCRIBE_WIDGET_PLUGIN_SLUG') )
-	define('LEADIN_SUBSCRIBE_PLUGIN_SLUG', basename(dirname(__FILE__)));
+if ( !defined('LEADOUT_SUBSCRIBE_WIDGET_PLUGIN_SLUG') )
+	define('LEADOUT_SUBSCRIBE_PLUGIN_SLUG', basename(dirname(__FILE__)));
 
 //=============================================
 // Include Needed Files
 //=============================================
-require_once(LEADIN_SUBSCRIBE_WIDGET_PLUGIN_DIR . '/admin/subscribe-widget-admin.php');
+require_once(LEADOUT_SUBSCRIBE_WIDGET_PLUGIN_DIR . '/admin/subscribe-widget-admin.php');
 
 //=============================================
-// WPLeadIn Class
+// WPLeadOut Class
 //=============================================
-class WPLeadInSubscribe extends WPLeadIn {
+class WPLeadOutSubscribe extends WPLeadOut {
 	
 	var $admin;
 	var $options;
@@ -180,10 +180,10 @@ class WPLeadInSubscribe extends WPLeadIn {
 
 		if ( ! is_admin() && $pagenow != 'wp-login.php' )
 		{
-			wp_register_script('leadout-subscribe', LEADIN_PATH . '/assets/js/build/leadout-subscribe.min.js', array ('jquery', 'leadout-tracking'), false, true);
+			wp_register_script('leadout-subscribe', LEADOUT_PATH . '/assets/js/build/leadout-subscribe.min.js', array ('jquery', 'leadout-tracking'), false, true);
 			wp_enqueue_script('leadout-subscribe');
 
-			wp_register_style('leadout-subscribe-css', LEADIN_PATH . '/assets/css/build/leadout-subscribe.css');
+			wp_register_style('leadout-subscribe-css', LEADOUT_PATH . '/assets/css/build/leadout-subscribe.css');
 			wp_enqueue_style('leadout-subscribe-css');
 		}
 	}

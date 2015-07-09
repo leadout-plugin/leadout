@@ -1,8 +1,8 @@
 <?php
 //=============================================
-// WPLeadInAdmin Class
+// WPLeadOutAdmin Class
 //=============================================
-class WPConstantContactConnectAdmin extends WPLeadInAdmin {
+class WPConstantContactConnectAdmin extends WPLeadOutAdmin {
     
     var $power_up_settings_section = 'leadin_cc_options_section';
     var $power_option_name = 'leadin_cc_options';
@@ -52,7 +52,7 @@ class WPConstantContactConnectAdmin extends WPLeadInAdmin {
         if ( $this->authed )
         {
             // Try to make a request using the authentication credentials
-            $this->lists = $this->li_cc_get_email_lists(LEADIN_CONSTANT_CONTACT_API_KEY, $this->options['li_cc_email'], $this->options['li_cc_password']);
+            $this->lists = $this->li_cc_get_email_lists(LEADOUT_CONSTANT_CONTACT_API_KEY, $this->options['li_cc_email'], $this->options['li_cc_password']);
 
             if ( $this->constant_contact->cc_exception )
             {
@@ -60,14 +60,14 @@ class WPConstantContactConnectAdmin extends WPLeadInAdmin {
             }
         }
 
-        add_settings_section($this->power_up_settings_section, $this->power_up_icon . "Constant Contact", array($this, 'cc_section_callback'), LEADIN_ADMIN_PATH);
+        add_settings_section($this->power_up_settings_section, $this->power_up_icon . "Constant Contact", array($this, 'cc_section_callback'), LEADOUT_ADMIN_PATH);
         
         if ( $this->authed && ! $this->bad_api_call )
-            add_settings_field('li_print_synced_lists', 'Synced tags', array($this, 'li_print_synced_lists'), LEADIN_ADMIN_PATH, $this->power_up_settings_section); 
+            add_settings_field('li_print_synced_lists', 'Synced tags', array($this, 'li_print_synced_lists'), LEADOUT_ADMIN_PATH, $this->power_up_settings_section); 
         else
         {
-            add_settings_field('li_cc_email', 'Email', array($this, 'li_cc_email_callback'), LEADIN_ADMIN_PATH, $this->power_up_settings_section);
-            add_settings_field('li_cc_password', 'Password', array($this, 'li_cc_password_callback'), LEADIN_ADMIN_PATH, $this->power_up_settings_section);
+            add_settings_field('li_cc_email', 'Email', array($this, 'li_cc_email_callback'), LEADOUT_ADMIN_PATH, $this->power_up_settings_section);
+            add_settings_field('li_cc_password', 'Password', array($this, 'li_cc_password_callback'), LEADOUT_ADMIN_PATH, $this->power_up_settings_section);
         }
     }
 
@@ -212,7 +212,7 @@ class WPConstantContactConnectAdmin extends WPLeadInAdmin {
 
     function li_get_lists ( )
     {
-        $lists = $this->li_cc_get_email_lists(LEADIN_CONSTANT_CONTACT_API_KEY, $this->options['li_cc_email'], $this->options['li_cc_password']);
+        $lists = $this->li_cc_get_email_lists(LEADOUT_CONSTANT_CONTACT_API_KEY, $this->options['li_cc_email'], $this->options['li_cc_password']);
 
         $sanitized_lists = array();
 

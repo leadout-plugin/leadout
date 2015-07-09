@@ -1,9 +1,9 @@
 <?php
 
 //=============================================
-// WPLeadIn Class
+// WPLeadOut Class
 //=============================================
-class WPLeadIn {
+class WPLeadOut {
 
     var $power_ups;
     /**
@@ -23,7 +23,7 @@ class WPLeadIn {
         if ( is_admin() )
         {
             if ( ! defined('DOING_AJAX') || ! DOING_AJAX )
-                $li_wp_admin = new WPLeadInAdmin($this->power_ups);
+                $li_wp_admin = new WPLeadOutAdmin($this->power_ups);
         }
         else
         {
@@ -46,7 +46,7 @@ class WPLeadIn {
      */
     function add_leadout_frontend_scripts ()
     {
-        wp_register_script('leadout-tracking', LEADIN_PATH . '/assets/js/build/leadout-tracking.min.js', array ('jquery'), FALSE, TRUE);
+        wp_register_script('leadout-tracking', LEADOUT_PATH . '/assets/js/build/leadout-tracking.min.js', array ('jquery'), FALSE, TRUE);
         wp_enqueue_script('leadout-tracking');
         
         // replace https with http for admin-ajax calls for SSLed backends 
@@ -71,7 +71,7 @@ class WPLeadIn {
                 return FALSE;
         }
 
-        $leadout_icon = '<img src="' . LEADIN_PATH . '/images/leadout-icon-16x16.png' . '">';
+        $leadout_icon = '<img src="' . LEADOUT_PATH . '/images/leadout-icon-16x16.png' . '">';
 
         $args = array(
             'id'     => 'leadout-admin-menu',
@@ -89,7 +89,7 @@ class WPLeadIn {
      */
     function append_leadout_version_number ( )
     {
-        echo "\n\n<!-- This site is collecting contacts with LeadOut v" . LEADIN_PLUGIN_VERSION . "--> \n";
+        echo "\n\n<!-- This site is collecting contacts with LeadOut v" . LEADOUT_PLUGIN_VERSION . "--> \n";
     }
 
     /**
@@ -100,7 +100,7 @@ class WPLeadIn {
         static $power_ups = null;
 
         if ( ! isset( $power_ups ) ) {
-            $files = self::glob_php( LEADIN_PLUGIN_DIR . '/power-ups' );
+            $files = self::glob_php( LEADOUT_PLUGIN_DIR . '/power-ups' );
 
             $power_ups = array();
 
@@ -129,7 +129,7 @@ class WPLeadIn {
                 if ( strstr($headers['icon_small'], 'dashicons') )
                     $power_up->icon_small = '<span class="dashicons ' . $headers['icon_small'] . '"></span>';
                 else
-                    $power_up->icon_small = '<img src="' . LEADIN_PATH . '/images/' . $headers['icon_small'] . '.png" class="power-up-settings-icon"/>';
+                    $power_up->icon_small = '<img src="' . LEADOUT_PATH . '/images/' . $headers['icon_small'] . '.png" class="power-up-settings-icon"/>';
 
                 array_push($power_ups, $power_up);
             }
@@ -149,7 +149,7 @@ class WPLeadIn {
      * Generate a power-up's path from its slug.
      */
     public static function get_power_up_path ( $slug ) {
-        return LEADIN_PLUGIN_DIR . "/power-ups/$slug.php";
+        return LEADOUT_PLUGIN_DIR . "/power-ups/$slug.php";
     }
 
     /**
@@ -224,13 +224,13 @@ class WPLeadIn {
         }
 
         $files = leadout_sort_power_ups($files, array(
-            LEADIN_PLUGIN_DIR . '/power-ups/contacts.php',
-            LEADIN_PLUGIN_DIR . '/power-ups/subscribe-widget.php', 
-            LEADIN_PLUGIN_DIR . '/power-ups/mailchimp-connect.php', 
-            LEADIN_PLUGIN_DIR . '/power-ups/constant-contact-connect.php',
-            LEADIN_PLUGIN_DIR . '/power-ups/aweber-connect.php',
-            LEADIN_PLUGIN_DIR . '/power-ups/campaign-monitor-connect.php',
-            LEADIN_PLUGIN_DIR . '/power-ups/getresponse-connect.php'
+            LEADOUT_PLUGIN_DIR . '/power-ups/contacts.php',
+            LEADOUT_PLUGIN_DIR . '/power-ups/subscribe-widget.php', 
+            LEADOUT_PLUGIN_DIR . '/power-ups/mailchimp-connect.php', 
+            LEADOUT_PLUGIN_DIR . '/power-ups/constant-contact-connect.php',
+            LEADOUT_PLUGIN_DIR . '/power-ups/aweber-connect.php',
+            LEADOUT_PLUGIN_DIR . '/power-ups/campaign-monitor-connect.php',
+            LEADOUT_PLUGIN_DIR . '/power-ups/getresponse-connect.php'
         ));
 
         closedir( $dir );

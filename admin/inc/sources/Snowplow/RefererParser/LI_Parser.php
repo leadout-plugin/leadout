@@ -116,6 +116,6 @@ class LI_Parser
 
     private static function createDefaultConfigReader()
     {
-        return new LI_JsonConfigReader(LEADIN_PLUGIN_DIR . '/admin/inc/sources/referers.json');
+        return new LI_JsonConfigReader(LEADOUT_PLUGIN_DIR . '/admin/inc/sources/referers.json');
     }
 }

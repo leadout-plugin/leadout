@@ -1,6 +1,6 @@
 <?php
 
-if ( !defined('LEADIN_PLUGIN_VERSION') ) 
+if ( !defined('LEADOUT_PLUGIN_VERSION') ) 
 {
     header('HTTP/1.0 403 Forbidden');
     die;
@@ -10,40 +10,40 @@ if ( !defined('LEADIN_PLUGIN_VERSION') )
 // Define Constants
 //=============================================
 
-if ( !defined('LEADIN_ADMIN_PATH') )
-    define('LEADIN_ADMIN_PATH', untrailingslashit(__FILE__));
+if ( !defined('LEADOUT_ADMIN_PATH') )
+    define('LEADOUT_ADMIN_PATH', untrailingslashit(__FILE__));
 
 //=============================================
 // Include Needed Files
 //=============================================
 
 if ( !class_exists('LI_List_Table') )
-    require_once LEADIN_PLUGIN_DIR . '/admin/inc/class-leadout-list-table.php';
+    require_once LEADOUT_PLUGIN_DIR . '/admin/inc/class-leadout-list-table.php';
 
 if ( !class_exists('LI_Contact') )
-    require_once LEADIN_PLUGIN_DIR . '/admin/inc/class-leadout-contact.php';
+    require_once LEADOUT_PLUGIN_DIR . '/admin/inc/class-leadout-contact.php';
 
 if ( !class_exists('LI_Pointers') )
-    require_once LEADIN_PLUGIN_DIR . '/admin/inc/class-leadout-pointers.php';
+    require_once LEADOUT_PLUGIN_DIR . '/admin/inc/class-leadout-pointers.php';
 
 if ( !class_exists('LI_Viewers') )
-    require_once LEADIN_PLUGIN_DIR . '/admin/inc/class-leadout-viewers.php';
+    require_once LEADOUT_PLUGIN_DIR . '/admin/inc/class-leadout-viewers.php';
 
 if ( !class_exists('LI_StatsDashboard') )
-    require_once LEADIN_PLUGIN_DIR . '/admin/inc/class-stats-dashboard.php';
+    require_once LEADOUT_PLUGIN_DIR . '/admin/inc/class-stats-dashboard.php';
 
 if ( !class_exists('LI_Tags_Table') )
-    require_once LEADIN_PLUGIN_DIR . '/admin/inc/class-leadout-tags-list-table.php';
+    require_once LEADOUT_PLUGIN_DIR . '/admin/inc/class-leadout-tags-list-table.php';
 
 if ( !class_exists('LI_Tag_Editor') )
-    require_once LEADIN_PLUGIN_DIR . '/admin/inc/class-leadout-tag-editor.php';
+    require_once LEADOUT_PLUGIN_DIR . '/admin/inc/class-leadout-tag-editor.php';
 
 include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 
 //=============================================
-// WPLeadInAdmin Class
+// WPLeadOutAdmin Class
 //=============================================
-class WPLeadInAdmin {
+class WPLeadOutAdmin {
     
     var $admin_power_ups;
     var $li_viewers;
@@ -66,7 +66,7 @@ class WPLeadInAdmin {
         $this->action = $this->leadout_current_action();
 
         // If the plugin version matches the latest version escape the update function
-        if ( $options['leadout_version'] != LEADIN_PLUGIN_VERSION )
+        if ( $options['leadout_version'] != LEADOUT_PLUGIN_VERSION )
             self::leadout_update_check();
 
         $this->admin_power_ups = $power_ups;
@@ -158,7 +158,7 @@ class WPLeadInAdmin {
         // Set the database version if it doesn't exist
         if ( isset($options['li_db_version']) )
         {
-            if ( $options['li_db_version'] != LEADIN_DB_VERSION ) 
+            if ( $options['li_db_version'] != LEADOUT_DB_VERSION ) 
             {
                 leadout_db_install();
 
@@ -187,7 +187,7 @@ class WPLeadInAdmin {
         }
 
         // Set the plugin version
-        leadout_update_option('leadin_options', 'leadout_version', LEADIN_PLUGIN_VERSION);
+        leadout_update_option('leadin_options', 'leadout_version', LEADOUT_PLUGIN_VERSION);
 
         // Catch all for installs that get their options nixed for whatever reason
         leadout_check_missing_options($options);
@@ -231,7 +231,7 @@ class WPLeadInAdmin {
 
         self::check_admin_action();
 
-        $leadout_icon = LEADIN_PATH . '/images/leadout-icon-16x16.png';
+        $leadout_icon = LEADOUT_PATH . '/images/leadout-icon-16x16.png';
 
         add_menu_page('LeadOut', 'LeadOut', $capability, 'leadout_stats', array($this, 'leadout_build_stats_page'), $leadout_icon , '25.100713');
 
@@ -496,7 +496,7 @@ class WPLeadInAdmin {
 
                             foreach ( $this->esp_power_ups as $power_up_name => $power_up_slug )
                             {
-                                if ( WPLeadIn::is_power_up_active($power_up_slug) )
+                                if ( WPLeadOut::is_power_up_active($power_up_slug) )
                                 {
                                     global ${'leadout_' . $power_up_slug . '_wp'}; // e.g leadout_mailchimp_connect_wp
                                     $esp_name = strtolower(str_replace('_connect', '', $power_up_slug)); // e.g. mailchimp
@@ -879,14 +879,14 @@ class WPLeadInAdmin {
             'leadout_settings_section',
             $visitor_tracking_icon . 'Visitor Tracking',
             array($this, 'leadin_options_section_heading'),
-            LEADIN_ADMIN_PATH
+            LEADOUT_ADMIN_PATH
         );
         
         add_settings_field(
             'li_email',
             'Your email',
             array($this, 'li_email_callback'),
-            LEADIN_ADMIN_PATH,
+            LEADOUT_ADMIN_PATH,
             'leadout_settings_section'
         );
 
@@ -894,7 +894,7 @@ class WPLeadInAdmin {
             'li_do_not_track',
             'Do not track logged in',
             array($this, 'li_do_not_track_callback'),
-            LEADIN_ADMIN_PATH,
+            LEADOUT_ADMIN_PATH,
             'leadout_settings_section'
         );
 
@@ -902,7 +902,7 @@ class WPLeadInAdmin {
             'li_grant_access',
             'Grant LeadOut access to',
             array($this, 'li_grant_access_callback'),
-            LEADIN_ADMIN_PATH,
+            LEADOUT_ADMIN_PATH,
             'leadout_settings_section'
         );
 
@@ -934,7 +934,7 @@ class WPLeadInAdmin {
         $options = get_option('leadin_options');
 
         $li_installed               = ( isset($options['li_installed']) ? $options['li_installed'] : 1 );
-        $li_db_version              = ( isset($options['li_db_version']) ? $options['li_db_version'] : LEADIN_DB_VERSION );
+        $li_db_version              = ( isset($options['li_db_version']) ? $options['li_db_version'] : LEADOUT_DB_VERSION );
         $ignore_settings_popup      = ( isset($options['ignore_settings_popup']) ? $options['ignore_settings_popup'] : 0 );
         $onboarding_complete        = ( isset($options['onboarding_complete']) ? $options['onboarding_complete'] : 0 );
         $onboarding_step            = ( isset($options['onboarding_step']) ? $options['onboarding_step'] : 1 );
@@ -942,7 +942,7 @@ class WPLeadInAdmin {
         $delete_flags_fixed         = ( isset($options['delete_flags_fixed']) ? $options['delete_flags_fixed'] : 0 );
         $converted_to_tags          = ( isset($options['converted_to_tags']) ? $options['converted_to_tags'] : 0 );
         $names_added_to_contacts    = ( isset($options['names_added_to_contacts']) ? $options['names_added_to_contacts'] : 0 );
-        $leadout_version             = ( isset($options['leadout_version']) ? $options['leadout_version'] : LEADIN_PLUGIN_VERSION );
+        $leadout_version             = ( isset($options['leadout_version']) ? $options['leadout_version'] : LEADOUT_PLUGIN_VERSION );
         $li_updates_subscription    = ( isset($options['li_updates_subscription']) ? $options['li_updates_subscription'] : 0 );
         
         printf(
@@ -1030,7 +1030,7 @@ class WPLeadInAdmin {
         if ( $li_options['onboarding_complete'] == 0 ) 
         {
             $this->leadout_plugin_onboarding();
-            wp_register_script('leadout-admin-js', LEADIN_PATH . '/assets/js/build/leadout-admin.min.js', array ( 'jquery' ), FALSE, TRUE);
+            wp_register_script('leadout-admin-js', LEADOUT_PATH . '/assets/js/build/leadout-admin.min.js', array ( 'jquery' ), FALSE, TRUE);
             wp_enqueue_script('leadout-admin-js');
             wp_localize_script('leadout-admin-js', 'li_admin_ajax', array('ajax_url' => get_admin_url(NULL,'') . '/admin-ajax.php'));
         }
@@ -1055,7 +1055,7 @@ class WPLeadInAdmin {
         
         <div class="oboarding-steps">
             
-            <img src="<?php echo LEADIN_PATH . '/images/leadout_logo.png' ; ?>" width="147px">
+            <img src="<?php echo LEADOUT_PATH . '/images/leadout_logo.png' ; ?>" width="147px">
                 
             <?php if ( $li_options['onboarding_step'] <= 1 ) : ?>
 
@@ -1119,15 +1119,15 @@ class WPLeadInAdmin {
                         <div class="popup-options">
                             <label class="popup-option">
                                 <input type="radio" name="popup-position" value="slide_in" checked="checked" >Slide in
-                                <img src="<?php echo LEADIN_PATH ?>/images/popup-bottom.png">
+                                <img src="<?php echo LEADOUT_PATH ?>/images/popup-bottom.png">
                             </label>
                             <label class="popup-option">
                                 <input type="radio" name="popup-position" value="popup">Popup
-                                <img src="<?php echo LEADIN_PATH ?>/images/popup-over.png">
+                                <img src="<?php echo LEADOUT_PATH ?>/images/popup-over.png">
                             </label>
                             <label class="popup-option">
                                 <input type="radio" name="popup-position" value="top">Top
-                                <img src="<?php echo LEADIN_PATH ?>/images/popup-top.png">
+                                <img src="<?php echo LEADOUT_PATH ?>/images/popup-top.png">
                             </label>
                         </div>
                         <a id="btn-activate-subscribe" href="<?php echo get_admin_url() .'admin.php?page=leadout_settings&leadout_action=activate&power_up=subscribe_widget&redirect_to=' . get_admin_url() . urlencode('admin.php?page=leadout_settings&activate_popup=true&popup_position=slide_in'); ?>" class="button button-primary button-big"><?php esc_attr_e('Activate the popup form');?></a>
@@ -1248,7 +1248,7 @@ class WPLeadInAdmin {
                 <form method="POST" action="options.php">
                     <?php 
                         settings_fields('leadout_settings_options');
-                        do_settings_sections(LEADIN_ADMIN_PATH);
+                        do_settings_sections(LEADOUT_ADMIN_PATH);
                         submit_button('Save Settings');
                     ?>
                 </form>
@@ -1427,7 +1427,7 @@ class WPLeadInAdmin {
                         <!-- static content stats power-up - not a real powerup and this is a hack to put it second in the order -->
                         <li class="powerup activated">
                             <div class="img-containter">
-                                <img src="<?php echo LEADIN_PATH; ?>/images/powerup-icon-analytics@2x.png" height="80px" width="80px">
+                                <img src="<?php echo LEADOUT_PATH; ?>/images/powerup-icon-analytics@2x.png" height="80px" width="80px">
                             </div>
                             <h2>Content Stats</h2>
                             <p>See where all your conversions are coming from.</p>
@@ -1441,7 +1441,7 @@ class WPLeadInAdmin {
                             <?php if ( strstr($power_up->icon, 'dashicon') ) : ?>
                                 <span class="<?php echo $power_up->icon; ?>"></span>
                             <?php else : ?>
-                                <img src="<?php echo LEADIN_PATH . '/images/' . $power_up->icon . '@2x.png'; ?>" height="80px" width="80px"/>
+                                <img src="<?php echo LEADOUT_PATH . '/images/' . $power_up->icon . '@2x.png'; ?>" height="80px" width="80px"/>
                             <?php endif; ?>
                         </div>
                         <h2><?php echo $power_up->power_up_name; ?></h2>
@@ -1500,7 +1500,7 @@ class WPLeadInAdmin {
 
                     $power_up = stripslashes( $_GET['power_up'] );
                     
-                    WPLeadIn::activate_power_up( $power_up, FALSE );
+                    WPLeadOut::activate_power_up( $power_up, FALSE );
                     
                     if ( isset($_GET['redirect_to']) )
                         wp_redirect($_GET['redirect_to']);
@@ -1514,7 +1514,7 @@ class WPLeadInAdmin {
 
                     $power_up = stripslashes( $_GET['power_up'] );
                     
-                    WPLeadIn::deactivate_power_up( $power_up, FALSE );
+                    WPLeadOut::deactivate_power_up( $power_up, FALSE );
                     wp_redirect(get_bloginfo('wpurl') . '/wp-admin/admin.php?page=leadout_power_ups');
                     exit;
 
@@ -1532,10 +1532,10 @@ class WPLeadInAdmin {
      */
     function add_leadout_admin_styles ()
     {
-        wp_register_style('leadout-admin-css', LEADIN_PATH . '/assets/css/build/leadout-admin.css');
+        wp_register_style('leadout-admin-css', LEADOUT_PATH . '/assets/css/build/leadout-admin.css');
         wp_enqueue_style('leadout-admin-css');
 
-        wp_register_style('select2', LEADIN_PATH . '/assets/css/select2.css');
+        wp_register_style('select2', LEADOUT_PATH . '/assets/css/select2.css');
         wp_enqueue_style('select2');
     }
 
@@ -1597,7 +1597,7 @@ class WPLeadInAdmin {
                 <?php
                     foreach ( $this->esp_power_ups as $power_up_name => $power_up_slug )
                     {
-                        if ( WPLeadIn::is_power_up_active($power_up_slug) )
+                        if ( WPLeadOut::is_power_up_active($power_up_slug) )
                         {
                             global ${'leadout_' . $power_up_slug . '_wp'}; // e.g leadout_mailchimp_connect_wp
                             $esp_name = strtolower(str_replace('_connect', '', $power_up_slug)); // e.g. mailchimp
@@ -1628,7 +1628,7 @@ class WPLeadInAdmin {
         ?>
         <div id="leadout-footer">
             <p class="support">            
-                LeadOut <?php echo LEADIN_PLUGIN_VERSION; ?>
+                LeadOut <?php echo LEADOUT_PLUGIN_VERSION; ?>
             </p>
         </div>
 

@@ -1,7 +1,7 @@
 <?php
 /**
 	* Power-up Name: Visitor Tracking
-	* Power-up Class: WPLeadInContacts
+	* Power-up Class: WPLeadOutContacts
 	* Power-up Menu Text: Contacts
 	* Power-up Menu Link: contacts
 	* Power-up Slug: contacts
@@ -21,25 +21,25 @@
 // Define Constants
 //=============================================
 
-if ( !defined('LEADIN_CONTACTS_PATH') )
-    define('LEADIN_CONTACTS_PATH', LEADIN_PATH . '/power-ups/contacts');
+if ( !defined('LEADOUT_CONTACTS_PATH') )
+    define('LEADOUT_CONTACTS_PATH', LEADOUT_PATH . '/power-ups/contacts');
 
-if ( !defined('LEADIN_CONTACTS_PLUGIN_DIR') )
-	define('LEADIN_CONTACTS_PLUGIN_DIR', LEADIN_PLUGIN_DIR . '/power-ups/contacts');
+if ( !defined('LEADOUT_CONTACTS_PLUGIN_DIR') )
+	define('LEADOUT_CONTACTS_PLUGIN_DIR', LEADOUT_PLUGIN_DIR . '/power-ups/contacts');
 
-if ( !defined('LEADIN_CONTACTS_PLUGIN_SLUG') )
-	define('LEADIN_CONTACTS_PLUGIN_SLUG', basename(dirname(__FILE__)));
+if ( !defined('LEADOUT_CONTACTS_PLUGIN_SLUG') )
+	define('LEADOUT_CONTACTS_PLUGIN_SLUG', basename(dirname(__FILE__)));
 
 //=============================================
 // Include Needed Files
 //=============================================
 
-require_once(LEADIN_CONTACTS_PLUGIN_DIR . '/admin/contacts-admin.php');
+require_once(LEADOUT_CONTACTS_PLUGIN_DIR . '/admin/contacts-admin.php');
 
 //=============================================
-// WPLeadInContacts Class
+// WPLeadOutContacts Class
 //=============================================
-class WPLeadInContacts extends WPLeadIn {
+class WPLeadOutContacts extends WPLeadOut {
 	
 	var $admin;
 	var $options;
@@ -77,6 +77,6 @@ class WPLeadInContacts extends WPLeadIn {
 //=============================================
 
 global $leadout_contacts;
-//$leadout_contacts = new WPLeadInContacts();
+//$leadout_contacts = new WPLeadOutContacts();
 
 ?>

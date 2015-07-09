@@ -228,7 +228,7 @@ class LI_Tag_Editor {
 				foreach ( $synced_lists as $synced_list )
 				{
 					$power_up_slug = $synced_list['esp'] . '_connect';  // e.g leadout_mailchimp_connect_wp
-					if ( WPLeadIn::is_power_up_active($power_up_slug) )
+					if ( WPLeadOut::is_power_up_active($power_up_slug) )
 					{
 						global ${'leadout_' . $power_up_slug . '_wp'}; // e.g leadout_mailchimp_connect_wp
 						${'leadout_' . $power_up_slug . '_wp'}->bulk_push_contact_to_list($synced_list['list_id'], $contacts);

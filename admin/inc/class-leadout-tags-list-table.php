@@ -7,7 +7,7 @@
 if ( !class_exists('WP_List_Table') )
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 
-require_once(LEADIN_PLUGIN_DIR . '/inc/leadout-functions.php');
+require_once(LEADOUT_PLUGIN_DIR . '/inc/leadout-functions.php');
 
 //=============================================
 // LI_List_Table Class

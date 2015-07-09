@@ -49,9 +49,8 @@ class LI_Emailer {
 
         $subject = "Form submission " . $tag_status . $return_status . "on " . get_bloginfo('name') . " - " . $history->lead->lead_email;
         
-        // @TODO - where are we going to send these from?
-        //$headers = "From: LeadOut <notifications@leadin.com>\r\n";
-        //$headers .= "Reply-To: LeadOut <notifications@leadin.com>\r\n";
+        $headers = "From: LeadOut <notifications@" . str_replace(array("http://", "https://"), array('', ''), get_bloginfo('wpurl')) . ">\r\n";
+        $headers .= "Reply-To: LeadOut <notifications@" . str_replace(array("http://", "https://"), array('', ''), get_bloginfo('wpurl')) . ">\r\n";
         $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-type: text/html; charset=utf-8\r\n";

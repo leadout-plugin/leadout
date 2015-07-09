@@ -5,9 +5,9 @@
 
 
 //=============================================
-// WPLeadInAdmin Class
+// WPLeadOutAdmin Class
 //=============================================
-class WPLeadInContactsAdmin extends WPLeadInAdmin {
+class WPLeadOutContactsAdmin extends WPLeadOutAdmin {
     
     /**
      * Class constructor
@@ -35,7 +35,7 @@ class WPLeadInContactsAdmin extends WPLeadInAdmin {
      */
     function power_up_setup_callback ()
     {
-        WPLeadInContactsAdmin::leadout_contacts_page();
+        WPLeadOutContactsAdmin::leadout_contacts_page();
     }
 
 
@@ -487,7 +487,7 @@ class WPLeadInContactsAdmin extends WPLeadInAdmin {
 
         if ( ($pagenow == 'admin.php' && isset($_GET['page']) && strstr($_GET['page'], 'leadout')) ) 
         {
-            wp_register_script('leadout-admin-js', LEADIN_PATH . '/assets/js/build/leadout-admin.min.js', array ( 'jquery' ), FALSE, TRUE);
+            wp_register_script('leadout-admin-js', LEADOUT_PATH . '/assets/js/build/leadout-admin.min.js', array ( 'jquery' ), FALSE, TRUE);
             wp_enqueue_script('leadout-admin-js');
             wp_localize_script('leadout-admin-js', 'li_admin_ajax', array('ajax_url' => get_admin_url(NULL,'') . '/admin-ajax.php'));
         }

@@ -21,25 +21,25 @@
 // Define Constants
 //=============================================
 
-if ( !defined('LEADIN_CAMPAIGN_MONITOR_CONNECT_PATH') )
-    define('LEADIN_CAMPAIGN_MONITOR_CONNECT_PATH', LEADIN_PATH . '/power-ups/campaign-monitor-connect');
+if ( !defined('LEADOUT_CAMPAIGN_MONITOR_CONNECT_PATH') )
+    define('LEADOUT_CAMPAIGN_MONITOR_CONNECT_PATH', LEADOUT_PATH . '/power-ups/campaign-monitor-connect');
 
-if ( !defined('LEADIN_CAMPAIGN_MONITOR_CONNECT_PLUGIN_DIR') )
-    define('LEADIN_CAMPAIGN_MONITOR_CONNECT_PLUGIN_DIR', LEADIN_PLUGIN_DIR . '/power-ups/campaign-monitor-connect');
+if ( !defined('LEADOUT_CAMPAIGN_MONITOR_CONNECT_PLUGIN_DIR') )
+    define('LEADOUT_CAMPAIGN_MONITOR_CONNECT_PLUGIN_DIR', LEADOUT_PLUGIN_DIR . '/power-ups/campaign-monitor-connect');
 
-if ( !defined('LEADIN_CAMPAIGN_MONITOR_CONNECT_PLUGIN_SLUG') )
-    define('LEADIN_CAMPAIGN_MONITOR_CONNECT_SLUG', basename(dirname(__FILE__)));
+if ( !defined('LEADOUT_CAMPAIGN_MONITOR_CONNECT_PLUGIN_SLUG') )
+    define('LEADOUT_CAMPAIGN_MONITOR_CONNECT_SLUG', basename(dirname(__FILE__)));
 
 //=============================================
 // Include Needed Files
 //=============================================
-require_once(LEADIN_CAMPAIGN_MONITOR_CONNECT_PLUGIN_DIR . '/admin/campaign-monitor-connect-admin.php');
-require_once(LEADIN_CAMPAIGN_MONITOR_CONNECT_PLUGIN_DIR . '/inc/li_campaign_monitor.php');
+require_once(LEADOUT_CAMPAIGN_MONITOR_CONNECT_PLUGIN_DIR . '/admin/campaign-monitor-connect-admin.php');
+require_once(LEADOUT_CAMPAIGN_MONITOR_CONNECT_PLUGIN_DIR . '/inc/li_campaign_monitor.php');
 
 //=============================================
-// WPLeadIn Class
+// WPLeadOut Class
 //=============================================
-class LICampaignMonitorConnect extends WPLeadIn {
+class LICampaignMonitorConnect extends WPLeadOut {
     
     var $admin;
     var $options;

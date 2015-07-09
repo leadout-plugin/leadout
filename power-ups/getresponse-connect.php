@@ -21,25 +21,25 @@
 // Define Constants
 //=============================================
 
-if ( !defined('LEADIN_GETRESPONSE_CONNECT_PATH') )
-    define('LEADIN_GETRESPONSE_CONNECT_PATH', LEADIN_PATH . '/power-ups/getresponse-connect');
+if ( !defined('LEADOUT_GETRESPONSE_CONNECT_PATH') )
+    define('LEADOUT_GETRESPONSE_CONNECT_PATH', LEADOUT_PATH . '/power-ups/getresponse-connect');
 
-if ( !defined('LEADIN_GETRESPONSE_CONNECT_PLUGIN_DIR') )
-    define('LEADIN_GETRESPONSE_CONNECT_PLUGIN_DIR', LEADIN_PLUGIN_DIR . '/power-ups/getresponse-connect');
+if ( !defined('LEADOUT_GETRESPONSE_CONNECT_PLUGIN_DIR') )
+    define('LEADOUT_GETRESPONSE_CONNECT_PLUGIN_DIR', LEADOUT_PLUGIN_DIR . '/power-ups/getresponse-connect');
 
-if ( !defined('LEADIN_GETRESPONSE_CONNECT_PLUGIN_SLUG') )
-    define('LEADIN_GETRESPONSE_CONNECT_SLUG', basename(dirname(__FILE__)));
+if ( !defined('LEADOUT_GETRESPONSE_CONNECT_PLUGIN_SLUG') )
+    define('LEADOUT_GETRESPONSE_CONNECT_SLUG', basename(dirname(__FILE__)));
 
 //=============================================
 // Include Needed Files
 //=============================================
-require_once(LEADIN_GETRESPONSE_CONNECT_PLUGIN_DIR . '/admin/getresponse-connect-admin.php');
-require_once(LEADIN_GETRESPONSE_CONNECT_PLUGIN_DIR . '/inc/LI_GetResponseAPI.php');
+require_once(LEADOUT_GETRESPONSE_CONNECT_PLUGIN_DIR . '/admin/getresponse-connect-admin.php');
+require_once(LEADOUT_GETRESPONSE_CONNECT_PLUGIN_DIR . '/inc/LI_GetResponseAPI.php');
 
 //=============================================
-// WPLeadIn Class
+// WPLeadOut Class
 //=============================================
-class LIGetResponseConnect extends WPLeadIn {
+class LIGetResponseConnect extends WPLeadOut {
     
     var $admin;
     var $options;

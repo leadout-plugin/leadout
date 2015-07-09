@@ -1,51 +1,74 @@
 <?php
 /*
 Plugin Name: LeadOut
-Plugin URI: http://leadin.com
+Plugin URI: http://github.com/leadout-plugin/leadout/
 Description: LeadOut is an easy-to-use marketing automation and lead tracking plugin for WordPress that helps you better understand your web site visitors.
 Version: 3.1.9
-Author: Andy Cook, Nelson Joyce
-Author URI: http://leadin.com
+Author: LeadOut
+Author URI: http://github.com/leadout-plugin/leadout/
 License: GPL2
 */
+
+if ( isset($_GET['error']) && $_GET['error'] == 'true' )
+{
+	if ( isset($_GET['plugin']) && $_GET['plugin'] == 'leadin/leadin.php' )
+	{
+		if ( function_exists('activate_leadin') )
+		{
+			include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+			include_once(ABSPATH . 'wp-includes/pluggable.php');
+
+			add_action( 'admin_notices', 'deactivate_leadin_notice' );		
+		}
+	}
+}
+
+function deactivate_leadin_notice () 
+{
+    ?>
+    <div id="message" class="error">
+        <?php _e( '<p><b>Don\'t panic...</b></p><p>Leadin and Leadin Premium are like two rival siblings - they don\'t play nice together. Deactivate <b><i>Leadin</i></b> and then try activating <b><i>Leadin Premium</i></b> again, and everything should work fine.</p>', 'my-text-domain' ); ?>
+    </div>
+    <?php
+}
 
 //=============================================
 // Define Constants
 //=============================================
 
-if ( !defined('LEADIN_PATH') )
-    define('LEADIN_PATH', untrailingslashit(plugins_url('', __FILE__ )));
+if ( !defined('LEADOUT_PATH') )
+    define('LEADOUT_PATH', untrailingslashit(plugins_url('', __FILE__ )));
 
-if ( !defined('LEADIN_PLUGIN_DIR') )
-	define('LEADIN_PLUGIN_DIR', untrailingslashit(dirname( __FILE__ )));
+if ( !defined('LEADOUT_PLUGIN_DIR') )
+	define('LEADOUT_PLUGIN_DIR', untrailingslashit(dirname( __FILE__ )));
 
-if ( !defined('LEADIN_PLUGIN_SLUG') )
-	define('LEADIN_PLUGIN_SLUG', basename(dirname(__FILE__)));
+if ( !defined('LEADOUT_PLUGIN_SLUG') )
+	define('LEADOUT_PLUGIN_SLUG', basename(dirname(__FILE__)));
 
-if ( !defined('LEADIN_DB_VERSION') )
-	define('LEADIN_DB_VERSION', '2.2.4');
+if ( !defined('LEADOUT_DB_VERSION') )
+	define('LEADOUT_DB_VERSION', '2.2.4');
 
-if ( !defined('LEADIN_PLUGIN_VERSION') )
-	define('LEADIN_PLUGIN_VERSION', '3.1.9');
+if ( !defined('LEADOUT_PLUGIN_VERSION') )
+	define('LEADOUT_PLUGIN_VERSION', '3.1.9');
 
 //=============================================
 // Include Needed Files
 //=============================================
 
-require_once(LEADIN_PLUGIN_DIR . '/inc/leadout-ajax-functions.php');
-require_once(LEADIN_PLUGIN_DIR . '/inc/leadout-functions.php');
-require_once(LEADIN_PLUGIN_DIR . '/inc/class-emailer.php');
-require_once(LEADIN_PLUGIN_DIR . '/admin/leadout-admin.php');
+require_once(LEADOUT_PLUGIN_DIR . '/inc/leadout-ajax-functions.php');
+require_once(LEADOUT_PLUGIN_DIR . '/inc/leadout-functions.php');
+require_once(LEADOUT_PLUGIN_DIR . '/inc/class-emailer.php');
+require_once(LEADOUT_PLUGIN_DIR . '/admin/leadout-admin.php');
 
-require_once(LEADIN_PLUGIN_DIR . '/inc/class-leadout.php');
+require_once(LEADOUT_PLUGIN_DIR . '/inc/class-leadout.php');
 
-require_once(LEADIN_PLUGIN_DIR . '/power-ups/subscribe-widget.php');
-require_once(LEADIN_PLUGIN_DIR . '/power-ups/contacts.php');
-require_once(LEADIN_PLUGIN_DIR . '/power-ups/mailchimp-connect.php');
-require_once(LEADIN_PLUGIN_DIR . '/power-ups/constant-contact-connect.php');
-require_once(LEADIN_PLUGIN_DIR . '/power-ups/aweber-connect.php');
-require_once(LEADIN_PLUGIN_DIR . '/power-ups/campaign-monitor-connect.php');
-require_once(LEADIN_PLUGIN_DIR . '/power-ups/getresponse-connect.php');
+require_once(LEADOUT_PLUGIN_DIR . '/power-ups/subscribe-widget.php');
+require_once(LEADOUT_PLUGIN_DIR . '/power-ups/contacts.php');
+require_once(LEADOUT_PLUGIN_DIR . '/power-ups/mailchimp-connect.php');
+require_once(LEADOUT_PLUGIN_DIR . '/power-ups/constant-contact-connect.php');
+require_once(LEADOUT_PLUGIN_DIR . '/power-ups/aweber-connect.php');
+require_once(LEADOUT_PLUGIN_DIR . '/power-ups/campaign-monitor-connect.php');
+require_once(LEADOUT_PLUGIN_DIR . '/power-ups/getresponse-connect.php');
 
 
 
@@ -103,8 +126,8 @@ function add_leadout_defaults ( )
 	{
 		$opt = array(
 			'li_installed'				=> 1,
-			'leadout_version'			=> LEADIN_PLUGIN_VERSION,
-			'li_db_version'				=> LEADIN_DB_VERSION,
+			'leadout_version'			=> LEADOUT_PLUGIN_VERSION,
+			'li_db_version'				=> LEADOUT_DB_VERSION,
 			'li_email' 					=> get_bloginfo('admin_email'),
 			'li_updates_subscription'	=> 1,
 			'onboarding_step'			=> 1,
@@ -198,7 +221,7 @@ function activate_leadout_on_new_blog ( $blog_id, $user_id, $domain, $path, $sit
  */
 function leadout_init ()
 {
-    $leadout_wp = new WPLeadIn();
+    $leadout_wp = new WPLeadOut();
 }
 
 //=============================================
@@ -290,7 +313,7 @@ function leadout_db_install ()
 
 	dbDelta($sql);
 
-    leadout_update_option('leadin_options', 'li_db_version', LEADIN_DB_VERSION);
+    leadout_update_option('leadin_options', 'li_db_version', LEADOUT_DB_VERSION);
 }
 
 add_action( 'plugins_loaded', 'leadout_init', 14 );

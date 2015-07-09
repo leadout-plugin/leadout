@@ -21,25 +21,25 @@
 // Define Constants
 //=============================================
 
-if ( !defined('LEADIN_AWEBER_CONNECT_PATH') )
-    define('LEADIN_AWEBER_CONNECT_PATH', LEADIN_PATH . '/power-ups/aweber-connect');
+if ( !defined('LEADOUT_AWEBER_CONNECT_PATH') )
+    define('LEADOUT_AWEBER_CONNECT_PATH', LEADOUT_PATH . '/power-ups/aweber-connect');
 
-if ( !defined('LEADIN_AWEBER_CONNECT_PLUGIN_DIR') )
-    define('LEADIN_AWEBER_CONNECT_PLUGIN_DIR', LEADIN_PLUGIN_DIR . '/power-ups/aweber-connect');
+if ( !defined('LEADOUT_AWEBER_CONNECT_PLUGIN_DIR') )
+    define('LEADOUT_AWEBER_CONNECT_PLUGIN_DIR', LEADOUT_PLUGIN_DIR . '/power-ups/aweber-connect');
 
-if ( !defined('LEADIN_AWEBER_CONNECT_PLUGIN_SLUG') )
-    define('LEADIN_AWEBER_CONNECT_PLUGIN_SLUG', basename(dirname(__FILE__)));
+if ( !defined('LEADOUT_AWEBER_CONNECT_PLUGIN_SLUG') )
+    define('LEADOUT_AWEBER_CONNECT_PLUGIN_SLUG', basename(dirname(__FILE__)));
 
 //=============================================
 // Include Needed Files
 //=============================================
-require_once(LEADIN_AWEBER_CONNECT_PLUGIN_DIR . '/admin/aweber-connect-admin.php');
-require_once(LEADIN_AWEBER_CONNECT_PLUGIN_DIR . '/inc/aweber_api/li_aweber_api.php');
+require_once(LEADOUT_AWEBER_CONNECT_PLUGIN_DIR . '/admin/aweber-connect-admin.php');
+require_once(LEADOUT_AWEBER_CONNECT_PLUGIN_DIR . '/inc/aweber_api/li_aweber_api.php');
 
 //=============================================
-// WPLeadIn Class
+// WPLeadOut Class
 //=============================================
-class LIAWeberConnect extends WPLeadIn {
+class LIAWeberConnect extends WPLeadOut {
     
     var $admin; 
     var $options;
