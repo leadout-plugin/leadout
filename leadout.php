@@ -13,21 +13,21 @@ if ( isset($_GET['error']) && $_GET['error'] == 'true' )
 {
 	if ( isset($_GET['plugin']) && $_GET['plugin'] == 'leadin/leadin.php' )
 	{
-		if ( function_exists('activate_leadin') )
+		if ( function_exists('activate_leadout') )
 		{
 			include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 			include_once(ABSPATH . 'wp-includes/pluggable.php');
 
-			add_action( 'admin_notices', 'deactivate_leadin_notice' );		
+			add_action( 'admin_notices', 'deactivate_leadout_notice' );		
 		}
 	}
 }
 
-function deactivate_leadin_notice () 
+function deactivate_leadout_notice () 
 {
     ?>
     <div id="message" class="error">
-        <?php _e( '<p><b>Don\'t panic...</b></p><p>Leadin and Leadin Premium are like two rival siblings - they don\'t play nice together. Deactivate <b><i>Leadin</i></b> and then try activating <b><i>Leadin Premium</i></b> again, and everything should work fine.</p>', 'my-text-domain' ); ?>
+        <?php _e( '<p><b>Don\'t panic...</b></p><p>Leadin and LeadOut are like two rival siblings - they don\'t play nice together. Deactivate <b><i>Leadin</i></b> and then try activating <b><i>LeadOut</i></b> again, and everything should work fine.</p>', 'my-text-domain' ); ?>
     </div>
     <?php
 }
@@ -79,7 +79,7 @@ require_once(LEADOUT_PLUGIN_DIR . '/power-ups/getresponse-connect.php');
 /**
  * Activate the plugin
  */
-function activate_leadin ( $network_wide )
+function activate_leadout ( $network_wide )
 {
 	// Check activation on entire network or one blog
 	if ( is_multisite() && $network_wide ) 
@@ -181,7 +181,7 @@ function add_leadout_defaults ( )
 /**
  * Deactivate LeadOut plugin hook
  */
-function deactivate_leadin ( $network_wide )
+function deactivate_leadout ( $network_wide )
 {
 	if ( is_multisite() && $network_wide ) 
 	{ 
@@ -207,7 +207,7 @@ function activate_leadout_on_new_blog ( $blog_id, $user_id, $domain, $path, $sit
 {
 	global $wpdb;
 
-	if ( is_plugin_active_for_network('leadin/leadin.php') )
+	if ( is_plugin_active_for_network('leadout/leadout.php') )
 	{
 		$current_blog = $wpdb->blogid;
 		switch_to_blog($blog_id);
@@ -321,10 +321,10 @@ add_action( 'plugins_loaded', 'leadout_init', 14 );
 if ( is_admin() ) 
 {
 	// Activate + install LeadOut
-	register_activation_hook( __FILE__, 'activate_leadin');
+	register_activation_hook( __FILE__, 'activate_leadout');
 
 	// Deactivate LeadOut
-	register_deactivation_hook( __FILE__, 'deactivate_leadin');
+	register_deactivation_hook( __FILE__, 'deactivate_leadout');
 
 	// Activate on newly created wpmu blog
 	add_action('wpmu_new_blog', 'activate_leadout_on_new_blog', 10, 6);

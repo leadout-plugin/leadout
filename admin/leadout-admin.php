@@ -74,7 +74,7 @@ class WPLeadOutAdmin {
         add_action('admin_menu', array(&$this, 'leadout_add_menu_items'));
         add_action('admin_init', array(&$this, 'leadout_build_settings_page'));
         add_action('admin_print_styles', array(&$this, 'add_leadout_admin_styles'));
-        add_filter('plugin_action_links_' . 'leadin/leadin.php', array($this, 'leadout_plugin_settings_link'));
+        add_filter('plugin_action_links_' . 'leadout/leadout.php', array($this, 'leadout_plugin_settings_link'));
 
         if ( isset($_GET['page']) && $_GET['page'] == 'leadout_stats' )
         {
