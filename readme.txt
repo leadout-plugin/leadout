@@ -47,6 +47,7 @@ How does LeadOut work?
 When you activate the WordPress plugin, LeadOut will track each anonymous visitor to your site with a cookie.
 Once someone fills out any form on your site, LeadOut will identify that person with their email address.
 You’ll receive an email with a link to the new contact record with all of their visit history.
+
 How do I integrate LeadOut with my form plugin?
 
 LeadOut automatically integrates with your contact and comment forms that contain an email address field on your web site. There’s no setup required.
@@ -60,8 +61,8 @@ Some common forms problems:
 Must be enclosed in <form> tags
 Must not be submitted through AJAX
 Must not have any javascript events bound to form submission or button click
-Tested + supported:
 
+Tested + supported:
 Contact Form 7
 JetPack
 Fast Secure Contact Form
@@ -74,8 +75,8 @@ HubSpot
 Quform
 Native WordPress comment forms
 Most custom forms
-Tested + unsupported:
 
+Tested + unsupported:
 Wufoo
 WooCommerce
 Easy Contact Forms
@@ -86,6 +87,7 @@ SumoMe
 Ninja Popups
 Forms contained in an iFrame
 FormCraft
+
 Why is the popup form not showing up?
 
 There’s a few reasons why you might not be seeing the popup. If you close the popup, LeadOut won’t show it to you again. We recommend trying to view your site in a Chrome ‘incognito window’. You can also use the “preview popup” button in your LeadOut settings to view the popup even if you’ve closed it.
@@ -94,7 +96,7 @@ If it’s still not working, the page templates you’re using might not be usin
 
 Can I change the style of the popup form?
 
-Right now, there’s no built in ability to change the style of the popup form. You can apply any CSS styles you want to the plugin to make it look how you want. The container class is “.vex-dialog-form”. We may add in basic color changing capabilities into the settings, but it probably wouldn’t be for a while.
+Right now, there’s no built in ability to change the style of the popup form. You can apply any CSS styles you want to the plugin to make it look how you want. The container class is “.vex-dialog-form”.
 
 What cookies does LeadOut use?
 
@@ -106,7 +108,7 @@ LeadOut creates a new contact in your Contacts Table whenever an email address i
 
 What languages is LeadOut available in?
 
-Right now, LeadOut is only available in English. We’re hoping to offer translations soon.
+LeadOut is only available in English.
 
 Does LeadOut work with WooCommerce?
 
@@ -118,4 +120,4 @@ You betcha! LeadOut should work just fine on multisite right out-of-the-box with
 
 How much does LeadOut cost?
 
-The basic version of LeadOut is completely free! We’re working on some additional features that we’ll change for in the future, but right now everything is free.
+LeadOut is completely free!

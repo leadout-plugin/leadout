@@ -1,20 +1,15 @@
-LeadOut is an open source edition of an older version of the [Leadin Plugin](http://leadin.com?utm_source=leadout_github). We offer this version for users who, for whatever reason, cannot store their visitor data in the cloud.
+LeadOut is an open source edition of the [Leadin Plugin](http://leadin.com?utm_source=leadout_github). We offer this version for users who, for whatever reason, cannot store their visitor data in the cloud. LeadOut stores your data in your own WordPress MySQL database.
 
 We offer LeadOut as-is meaning we do not provide support or updates for it. If you would like to keep up to date with the newest features and functionality offered by Leadin we recommend that you install the latest version of Leadin from [our website](http://leadin.com/download?utm_source=leadout_github).
 
-Please take a look at our **GitHub Wiki** for help and frequently asked questions.
+Please take a look at our [GitHub Wiki](https://github.com/leadout-plugin/leadout/wiki) for help and frequently asked questions.
 
 # LeadOut #
-**Contributors:** andygcook, nelsonjoyce
-
 **Tags:**  crm, contacts, lead tracking, click tracking, visitor tracking, analytics, marketing automation, inbound marketing, subscription, marketing, lead generation, mailchimp, constant contact, newsletter, popup, popover, email list, email, contacts database, contact form, forms, form widget, popup form
 
-**Requires at least:** 3.7
+**Requires at least:** WordPress 3.7
 
-**Tested up to:** 4.2.2
-
-**Stable tag:** 3.1.9
-
+**Tested up to:** WordPress 4.2.2
 
 LeadOut is an easy-to-use marketing automation and lead tracking plugin for WordPress that helps you better understand your web site visitors.
 
@@ -42,12 +37,6 @@ Our simple analytics show you what sources of traffic and content are driving th
 2. LeadOut automatically identifies and watches each existing form on your site for submissions.
 3. Once someone fills out any other form on your site, LeadOut will identify that person with their email address. and add them to your contact list.
 4. You'll also receive an email with a link to the new contact record with all of their visit history. (check the screenshots to see it in action)
-
-### Who's using LeadOut? ###
-
-**<a href="http://www.extremeinbound.com/leadin-wordpress-crm-inbound-plugin/" target="_blank">Alan Perlman</a>**: *“I can use LeadOut to get a sense of how engaged certain contacts are, and I can learn more about their behavior on my website to better drive the conversation and understand what they’re interested in or looking for.”*
-
-**<a href="http://thewpvalet.com/wordpress-lead-tracking/" target="_blank">Adam W. Warner</a>**: *“…the LeadOut plugin has been very useful so far in giving us an idea of the actual visitor paths to our contact forms vs. the paths we’ve intended.”*
 
 ## Installation ##
 
@@ -138,23 +127,3 @@ You betcha! LeadOut should work just fine on multisite right out-of-the-box with
 ### How much does LeadOut cost?
 
 LeadOut is completely free!
-
-## Screenshots ##
-
-###1. See the visit history of each contact.
-###
-
-###2. Get an email notification for every new lead.
-###
-
-###3. LeadOut stats show you where your leads are coming from.
-###
-
-###4. Segment your contact list based on page views and submissions.
-###
-
-###5. Collect more contacts with the pop-up subscribe widget.
-###
-
-###6. Create custom tagged lists, choose the form triggers to add contacts and sync your contacts to third-party email services
-###
